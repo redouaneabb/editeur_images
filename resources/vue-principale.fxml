@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- son role est simplemnt ce que l'utilisateur voit
+et avec quoi il peut interagir et en fonction des infos seront envoyées au main Controller -->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.Insets?>
+
+
+<!-- on choisit border pan car il semblait le plus approprié le fx:controller
+permet de demande a MainController de faire quelque chose si un boiuton est ciqué -->
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ProjetFinale.MainController" stylesheets="@style.css">
+    <top>
+        <!-- les onAction permettent lancer la methode du meme nom si cliqué -->
+        <HBox spacing="10" alignment="CENTER" styleClass="top-bar">
+            <padding><Insets top="10" bottom="10"/></padding>
+            <Button text=" Importer une image" onAction="#handleImport"/>
+            <Button text="Chiffrer" onAction="#handleChiffre">
+                <tooltip>
+                    <Tooltip text="Protege limage par chiffrement"/>
+                </tooltip>
+            </Button>
+            <Button fx:id="btnDechiffrer" text="Déchiffrer" onAction="#handleDechiffrer"/>
+        </HBox>
+    </top>
+
+    <center>
+        <!--scrollpane au cas ou image immense-->
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true">
+            <StackPane>
+                <ImageView fx:id="imageView" preserveRatio="true" fitWidth="${scrollPane.width}" fitHeight="${scrollPane.height}"/>
+            </StackPane>
+        </ScrollPane>
+    </center>
+
+    <right>
+        <!-- les fx:id permettent simplement au controller de "prendre" l'objet et de le modifier -->
+        <VBox spacing="10" prefWidth="180" styleClass="side-panel">
+            <padding><Insets top="10" left="10"/></padding>
+
+            <Label text="Options de Traitement" styleClass="titre"/>
+            <ComboBox fx:id="comboFiltres" promptText="choisir un filtre" prefWidth="160"/>
+            <Button text="Réinitialiser l'image" onAction="#handleReset" prefWidth="160"/>
+            <Button text="Appliquer le filtre" onAction="#handleTraitement" prefWidth="160"/>
+
+            <Separator/>
+            <Label text="Gestion des tags" styleClass="titre"/>
+            <ListView fx:id="listTags" prefHeight="200"/>
+
+            <TextField fx:id="nouveauTagField" promptText="Entrer un tag" onAction="#handleAjouterTag"/>
+            <Button text="Ajouter le tag" onAction="#handleAjouterTag" prefWidth="160" styleClass="bouton"/>
+            <Button text="Rechercher par tag" onAction="#handleRecherche" prefWidth="160" styleClass="bouton"/>
+            <Separator/>
+            <Button fx:id="btnSuivant" text="Image Suivante" onAction="#handleSuivant" prefWidth="160" visible="false" styleClass="bouton"/>
+        </VBox>
+    </right>
+</BorderPane>
+
+

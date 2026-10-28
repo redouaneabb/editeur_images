@@ -1,0 +1,6 @@
+{
+  "nomFic" : "imagestest2.jpg",
+  "tags" : [ "arbre" ],
+  "estChiffre" : false,
+  "historiqueTransfos" : [ "Rotation 90°", "Rotation 90°", "Rotation 90°", "Rotation 90°", "Rotation 90°", "Rotation 90°", "Rotation 90°", "Rotation 90°", "Sépia", "Miroir", "Rotation 90°", "Chiffrement", "Dechiffrement", "Chiffrement", "Dechiffrement", "Chiffrement", "Dechiffrement" ]
+}
